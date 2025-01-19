@@ -3,7 +3,8 @@
 // import ContactPage from "./Pages/ContactPage";
 import React from "react";
 import "./App.css";
-import AuthPage from "./Pages/AuthPage";
+// import AuthPage from "./Pages/AuthPage";
+import CardPage from "./Pages/CardPage";
 
 function App() {
   return (
@@ -11,7 +12,8 @@ function App() {
         {/* <HomePage /> */}
         {/* <ShopPage /> */}
         {/* <ContactPage /> */}
-        <AuthPage />
+        {/* <AuthPage /> */}
+        <CardPage />
       </React.Fragment>
   );
 }
