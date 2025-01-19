@@ -3,8 +3,10 @@
 // import ContactPage from "./Pages/ContactPage";
 import React from "react";
 import "./App.css";
+// import BlogPage from "./Pages/BlogPage";
+import BlogDetailsPage from "./Pages/BlogDetailsPage";
 // import AuthPage from "./Pages/AuthPage";
-import CardPage from "./Pages/CardPage";
+// import CardPage from "./Pages/CardPage";
 
 function App() {
   return (
@@ -13,7 +15,9 @@ function App() {
         {/* <ShopPage /> */}
         {/* <ContactPage /> */}
         {/* <AuthPage /> */}
-        <CardPage />
+        {/* <CardPage /> */}
+        {/* <BlogPage /> */}
+        <BlogDetailsPage />
       </React.Fragment>
   );
 }
