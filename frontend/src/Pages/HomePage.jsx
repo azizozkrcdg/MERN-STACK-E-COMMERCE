@@ -1,7 +1,5 @@
 import React from "react"
-import Header from '../components/Layout/Layouts/Header/Header'
 import Sliders from '../components/Layout/Sliders/Sliders'
-import Footer from '../components/Layout/Layouts/Footer/Footer'
 import Categories from '../components/Layout/Categories/Categories'
 import Products from '../components/Layout/Products/Products'
 import Campaigns from '../components/Layout/Campaigns/Campaigns'
@@ -11,7 +9,7 @@ import CampaignSingle from '../components/Layout/CampaignSingle/CampaignSingle'
 const HomePage = () => {
   return (
     <React.Fragment>
-        <Header />
+        
         <Sliders />
         <Categories />
         <Products />
@@ -20,7 +18,7 @@ const HomePage = () => {
         <Blogs />
         <Brands />
         <CampaignSingle />
-        <Footer />
+        
     </React.Fragment>
       
   )
