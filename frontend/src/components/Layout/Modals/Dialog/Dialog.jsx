@@ -6,7 +6,7 @@ const Dialog = ({isDialogShow, setIsDialogShow}) => {
   const handleCloseDialog = (event) => {
     const checked = event.target.checked;
     
-    localStorage.setItem("dialog", JSON.stringify(!checked));
+    localStorage.setItem("dialog", JSON.stringify(!checked)); //checked değerini localStorage kaydeder
   }
 
   return (

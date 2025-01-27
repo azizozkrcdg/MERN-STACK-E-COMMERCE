@@ -15,7 +15,7 @@ const MainLayout = ({ children }) => {
       : localStorage.setItem("dialog", JSON.stringify(true));
 
     setTimeout(() => {
-      setIsDialogShow(dialogStatus);
+      setIsDialogShow(dialogStatus); 
     }, 2000);
   }, []);
 
