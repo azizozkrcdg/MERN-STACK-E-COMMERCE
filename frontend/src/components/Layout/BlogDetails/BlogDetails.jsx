@@ -1,5 +1,5 @@
-import Reviews from '../Reviews/Reviews'
-import './BlogDetails.css'
+import Reviews from '../Reviews/Reviews';
+import './BlogDetails.css';
 
 const BlogDetails = () => {
   return (
