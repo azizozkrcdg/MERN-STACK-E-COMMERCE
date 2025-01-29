@@ -4,7 +4,7 @@ import "./Sliders.css"
 
 const Slider = () => {
 
-  const [currentSlide, setCurrentSlide]  = useState(0)
+  const [currentSlide, setCurrentSlide]  = useState(0);
 
   const nextSlide = () => {
     setCurrentSlide((prevSlide) => (prevSlide + 1) % 3);
