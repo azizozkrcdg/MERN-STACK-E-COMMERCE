@@ -1,6 +1,6 @@
-import { useState } from "react"
-import SliderItem from "./SliderItem"
-import "./Sliders.css"
+import { useState } from "react";
+import SliderItem from "./SliderItem";
+import "./Sliders.css";
 
 const Slider = () => {
 
@@ -17,6 +17,7 @@ const Slider = () => {
   return (
     <section className="slider">
     <div className="slider-elements">
+      {/* slider item */}
       {currentSlide === 0 && <SliderItem imageSrc="img/slider/slider1.jpg"/>}
       {currentSlide === 1 && <SliderItem imageSrc="img/slider/slider2.jpg"/>}
       {currentSlide === 2 && <SliderItem imageSrc="img/slider/slider3.jpg"/>}
@@ -30,6 +31,7 @@ const Slider = () => {
         </button>
       </div>
       <div className="slider-dots">
+        {/* slider dots */}
         <button className={`slider-dot ${currentSlide === 0 ? "active" : ""}`} onClick={() => setCurrentSlide(0)}>
           <span></span>
         </button>
