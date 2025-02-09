@@ -20,13 +20,13 @@
 }
 
 .single-product .gallery-thumbs {
-    display: flex;
+    /* display: flex; */
     column-gap: 10px;
 }
 
 .single-product .gallery-thumbs li {
   cursor: pointer;
-  display: flex;
+  /* display: flex; */
 }
 
 .single-product .gallery-thumbs li img {
