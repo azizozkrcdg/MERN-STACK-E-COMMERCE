@@ -2,7 +2,7 @@ import { useState } from "react";
 import ProductItem from "./ProductItem";
 import Slider from "react-slick";
 import PropTypes from "prop-types";
-import ProductsData from "../../../data.json";
+import productsData from "../../../data.json";
 import "./Products.css";
 
 // slider sağ butonu
@@ -30,17 +30,18 @@ PrevBtn.propTypes = {
 };
 
 const Products = () => {
-  const [products] = useState(ProductsData);
+  const [products] = useState(productsData);
 
+  // slider ayarları 
   const sliderSettings = {
     dots: false,
     infinite: true,
-    slidesToShow: 4,
+    slidesToShow: 4, //kaç adet ürün görünecek
     slidesToScroll: 1,
     nextArrow: <NextBtn />,
     prevArrow: <PrevBtn />,
-    autoplaySpeed : 3000,
-    autoplay : true,
+    autoplaySpeed : 3000, //otomatik kayma süresi
+    autoplay : true, 
     responsive : [
       {
         breakpoint : 992,
