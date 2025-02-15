@@ -1,6 +1,10 @@
+import { useState } from 'react';
 import './Info.css'
 
 const Info = () => {
+
+  const [activeWrapper, setActiveWrapper] = useState("blue")
+
   return (
     <div className="product-info">
       <h1 className="product-title">Ridley High Waist</h1>
@@ -38,25 +42,26 @@ const Info = () => {
             <div className="colors-label">
               <span>Color</span>
             </div>
+            {/* colors */}
             <div className="colors-wrapper">
-              <div className="color-wrapper">
+              <div className={`color-wrapper ${activeWrapper === "blue" ? "active":""}`} id='blue'>
                 <label className="blue-color">
-                  <input type="radio" name="product-color" />
+                  <input type="radio" name="product-color" onClick={()=>setActiveWrapper("blue")} />
                 </label>
               </div>
-              <div className="color-wrapper">
+              <div className={`color-wrapper ${activeWrapper === "red" ? "active":""}`} id='red'>
                 <label className="red-color">
-                  <input type="radio" name="product-color" />
+                  <input type="radio" name="product-color" onClick={()=>setActiveWrapper("red")} />
                 </label>
               </div>
-              <div className="color-wrapper active">
+              <div className={`color-wrapper ${activeWrapper === "green" ? "active":""}`} id='green'>
                 <label className="green-color">
-                  <input type="radio" name="product-color" />
+                  <input type="radio" name="product-color" onClick={()=>setActiveWrapper("green")}/>
                 </label>
               </div>
-              <div className="color-wrapper">
+              <div className={`color-wrapper ${activeWrapper === "purple" ? "active":""}`} id='purple'>
                 <label className="purple-color">
-                  <input type="radio" name="product-color" />
+                  <input type="radio" name="product-color" onClick={()=>setActiveWrapper("purple")}/>
                 </label>
               </div>
             </div>
