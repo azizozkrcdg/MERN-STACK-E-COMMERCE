@@ -1,9 +1,12 @@
-import { useState } from 'react';
-import './Info.css'
+import { useState } from "react";
+import "./Info.css";
 
 const Info = () => {
+  // renk seçimi state
+  const [activeWrapper, setActiveWrapper] = useState("blue");
 
-  const [activeWrapper, setActiveWrapper] = useState("blue")
+  // beden seçmi state
+  const [activeSize, setActiveSize] = useState("xs");
 
   return (
     <div className="product-info">
@@ -44,24 +47,60 @@ const Info = () => {
             </div>
             {/* colors */}
             <div className="colors-wrapper">
-              <div className={`color-wrapper ${activeWrapper === "blue" ? "active":""}`} id='blue'>
+              <div
+                className={`color-wrapper ${
+                  activeWrapper === "blue" ? "active" : ""
+                }`}
+                id="blue"
+              >
                 <label className="blue-color">
-                  <input type="radio" name="product-color" onClick={()=>setActiveWrapper("blue")} />
+                  <input
+                    type="radio"
+                    name="product-color"
+                    onClick={() => setActiveWrapper("blue")}
+                  />
                 </label>
               </div>
-              <div className={`color-wrapper ${activeWrapper === "red" ? "active":""}`} id='red'>
+              <div
+                className={`color-wrapper ${
+                  activeWrapper === "red" ? "active" : ""
+                }`}
+                id="red"
+              >
                 <label className="red-color">
-                  <input type="radio" name="product-color" onClick={()=>setActiveWrapper("red")} />
+                  <input
+                    type="radio"
+                    name="product-color"
+                    onClick={() => setActiveWrapper("red")}
+                  />
                 </label>
               </div>
-              <div className={`color-wrapper ${activeWrapper === "green" ? "active":""}`} id='green'>
+              <div
+                className={`color-wrapper ${
+                  activeWrapper === "green" ? "active" : ""
+                }`}
+                id="green"
+              >
                 <label className="green-color">
-                  <input type="radio" name="product-color" onClick={()=>setActiveWrapper("green")}/>
+                  <input
+                    type="radio"
+                    name="product-color"
+                    onClick={() => setActiveWrapper("green")}
+                  />
                 </label>
               </div>
-              <div className={`color-wrapper ${activeWrapper === "purple" ? "active":""}`} id='purple'>
+              <div
+                className={`color-wrapper ${
+                  activeWrapper === "purple" ? "active" : ""
+                }`}
+                id="purple"
+              >
                 <label className="purple-color">
-                  <input type="radio" name="product-color" onClick={()=>setActiveWrapper("purple")}/>
+                  <input
+                    type="radio"
+                    name="product-color"
+                    onClick={() => setActiveWrapper("purple")}
+                  />
                 </label>
               </div>
             </div>
@@ -71,17 +110,47 @@ const Info = () => {
               <span>Size</span>
             </div>
             <div className="values-list">
-              <span className="active">XS</span>
-              <span>S</span>
-              <span>M</span>
-              <span>L</span>
-              <span>XL</span>
+              <span
+                className={`${activeSize === "xs" ? "active" : ""}`}
+                id="xs"
+                onClick={() => setActiveSize("xs")}
+              >
+                XS
+              </span>
+              <span
+                className={`${activeSize === "s" ? "active" : ""}`}
+                id="s"
+                onClick={() => setActiveSize("s")}
+              >
+                S
+              </span>
+              <span
+                className={`${activeSize === "m" ? "active" : ""}`}
+                id="m"
+                onClick={() => setActiveSize("m")}
+              >
+                M
+              </span>
+              <span
+                className={`${activeSize === "l" ? "active" : ""}`}
+                id="l"
+                onClick={() => setActiveSize("l")}
+              >
+                L
+              </span>
+              <span
+                className={`${activeSize === "xl" ? "active" : ""}`}
+                id="xl"
+                onClick={() => setActiveSize("xl")}
+              >
+                XL
+              </span>
             </div>
           </div>
           <div className="cart-button">
             <input type="number" defaultValue="1" min="1" id="quantity" />
             <button
-              className="btn btn-lg btn-primary"
+              className="btn btn-lg btn-warning"
               id="add-to-cart"
               type="button"
             >

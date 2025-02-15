@@ -146,12 +146,12 @@
 }
 
 .site-main .values .values-list span.active {
-  background-color: #e51414;
+  background-color: #f44a1b;
   color: #fff;
 }
 
 .site-main .values .values-list span:hover {
-  background-color: #e51414;
+  background-color: #f44a1b;
   color: #fff;
 }
 
@@ -166,12 +166,20 @@
 
 .site-main .cart-button button {
   width: 100%;
+  background-color: #f44a1b;
+  color: #fff;
+}
+
+.site-main .cart-button button:hover {
+  width: 100%;
+  background-color: #fff;
+  color: #f44a1b;
 }
 
 .site-main .cart-button button:disabled {
-  background-color: #1367ef;
+  background-color: #f44a1b; 
   color: #fff;
-  border-color: #1367ef;
+  border-color: #f44a1b;
 }
 
 .site-main .product-extra-buttons {
