@@ -1,8 +1,8 @@
-// import HomePage from "./Pages/HomePage";
+import HomePage from "./Pages/HomePage";
 // import ShopPage from "./Pages/ShopPage";
 // import ContactPage from "./Pages/ContactPage";
 import React from "react";
-import ProductDetailsPage from "./Pages/ProductDetailsPage";
+// import ProductDetailsPage from "./Pages/ProductDetailsPage";
 // import BlogPage from "./Pages/BlogPage";
 // import BlogDetailsPage from "./Pages/BlogDetailsPage";
 // import AuthPage from "./Pages/AuthPage";
@@ -12,14 +12,14 @@ import "./App.css";
 function App() {
   return (
       <React.Fragment>
-        {/* <HomePage /> */}
+        <HomePage />
         {/* <ShopPage /> */}
         {/* <ContactPage /> */}
         {/* <AuthPage /> */}
         {/* <CardPage /> */}
         {/* <BlogPage /> */}
         {/* <BlogDetailsPage /> */}
-        <ProductDetailsPage />
+        {/* <ProductDetailsPage /> */}
       </React.Fragment>
   );
 }

@@ -1,17 +1,23 @@
+import PropTypes from "prop-types";
 import "./ProductItem.css";
+import { useContext } from "react";
+import { CartContext } from "../../../Context/CartProvider";
 
-const ProductItem = () => {
+const ProductItem = ({ productItem }) => {
+
+  const {addToCart} = useContext(CartContext) 
+
   return (
     <div className="product-item glide__slide glide__slide--active">
       <div className="product-image">
         <a href="#">
           <img
-            src="img/products/product1/1.png"
+            src={productItem.img.singleImage}
             alt="Product Image 1"
             className="img1"
           />
           <img
-            src="img/products/product1/2.png"
+            src={productItem.img.thumbs[2]}
             alt="Product Image 2"
             className="img2"
           />
@@ -19,7 +25,7 @@ const ProductItem = () => {
       </div>
       <div className="product-info">
         <a href="#" className="product-title">
-          Analogue Resin Strap
+          {productItem.name}
         </a>
         <ul className="product-star">
           <li>
@@ -39,12 +45,19 @@ const ProductItem = () => {
           </li>
         </ul>
         <div className="product-prices">
-          <strong className="new-price">108.00 TL</strong>
-          <span className="old-price">165.00 TL</span>
+          <strong className="new-price">
+            {productItem.price.newPrice.toFixed(2)} TL
+          </strong>
+          <span className="old-price">
+            {productItem.price.oldPrice.toFixed(2)} TL
+          </span>
         </div>
-        <span className="product-discount">-17%</span>
+        <span className="product-discount">-{productItem.discount}%</span>
         <div className="product-links">
-          <button>
+          <button
+            className="add-to-cart"
+            onClick={() => addToCart(productItem)}
+          >
             <i className="bi bi-basket-fill"></i>
           </button>
           <button>
@@ -63,3 +76,8 @@ const ProductItem = () => {
 };
 
 export default ProductItem;
+
+ProductItem.propTypes = {
+  productItem: PropTypes.object,
+  setCartItems: PropTypes.func,
+};

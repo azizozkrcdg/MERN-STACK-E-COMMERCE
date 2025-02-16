@@ -182,6 +182,10 @@
   border-color: #f44a1b;
 }
 
+.cart-button button{
+  border-color: #f44a1b;
+}
+
 .site-main .product-extra-buttons {
   display: flex;
   align-items: center;
