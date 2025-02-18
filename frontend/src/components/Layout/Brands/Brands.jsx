@@ -15,7 +15,7 @@ const Brands = () => {
       </ul>
     </div>
   </section>
-  )
-}
+  );
+};
 
-export default Brands
+export default Brands;
