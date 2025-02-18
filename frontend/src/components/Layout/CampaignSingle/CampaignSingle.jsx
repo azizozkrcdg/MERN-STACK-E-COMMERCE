@@ -1,4 +1,4 @@
-import "./CampaignSingle.css"
+import "./CampaignSingle.css";
 
 const CampaignSingle = () => {
   return (
@@ -15,7 +15,7 @@ const CampaignSingle = () => {
       </div>
     </div>
   </section>
-  )
-}
+  );
+};
 
-export default CampaignSingle
+export default CampaignSingle;
