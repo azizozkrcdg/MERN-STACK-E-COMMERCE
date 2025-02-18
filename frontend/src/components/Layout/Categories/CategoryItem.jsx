@@ -1,4 +1,4 @@
-import "./CategoryItem.css"
+import "./CategoryItem.css";
 const CategoryItem = () => {
   return (
     <li className="category-item">
