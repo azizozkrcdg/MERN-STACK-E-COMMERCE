@@ -109,7 +109,7 @@ const BlogDetails = () => {
         <Reviews />
       </div>
     </section>
-  )
-}
+  );
+};
 
-export default BlogDetails
+export default BlogDetails;
