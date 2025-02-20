@@ -1,5 +1,5 @@
-import React from "react"
-import Blogs from "../components/Layout/Blogs/Blogs"
+import React from "react";
+import Blogs from "../components/Layout/Blogs/Blogs";
 
 const BlogPage = () => {
   return (
@@ -8,7 +8,7 @@ const BlogPage = () => {
         <Blogs />
         </div>
     </React.Fragment>
-  )
-}
+  );
+};
 
-export default BlogPage
+export default BlogPage;
