@@ -1,4 +1,4 @@
-import HomePage from "./Pages/HomePage";
+// import HomePage from "./Pages/HomePage";
 // import ShopPage from "./Pages/ShopPage";
 // import ContactPage from "./Pages/ContactPage";
 import React from "react";
@@ -6,17 +6,17 @@ import React from "react";
 // import BlogPage from "./Pages/BlogPage";
 // import BlogDetailsPage from "./Pages/BlogDetailsPage";
 // import AuthPage from "./Pages/AuthPage";
-// import CardPage from "./Pages/CardPage";
+import CardPage from "./Pages/CardPage";
 import "./App.css";
 
 function App() {
   return (
       <React.Fragment>
-        <HomePage />
+        {/* <HomePage /> */}
         {/* <ShopPage /> */}
         {/* <ContactPage /> */}
         {/* <AuthPage /> */}
-        {/* <CardPage /> */}
+        <CardPage />
         {/* <BlogPage /> */}
         {/* <BlogDetailsPage /> */}
         {/* <ProductDetailsPage /> */}

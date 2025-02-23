@@ -1,6 +1,10 @@
-import CardItem from "./CardItem";
+import { useContext } from "react";
+import CartItem from "./CardItem";
+import { CartContext } from "../../../Context/CartProvider";
 
 const CardTable = () => {
+
+  const {cartItems} = useContext(CartContext);
   return (
     <table className="shop-table">
       <thead>
@@ -14,7 +18,10 @@ const CardTable = () => {
         </tr>
       </thead>
       <tbody className="cart-wrapper">
-        <CardItem />
+        {cartItems.map((item) => (
+          <CartItem cartItem={item} key={item.id} />
+        ))}
+        
       </tbody>
     </table>
   );
