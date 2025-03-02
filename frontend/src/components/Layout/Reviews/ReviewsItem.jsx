@@ -2,7 +2,7 @@ const ReviewsItem = () => {
   return (
     <li className="comment-item">
       <div className="comment-avatar">
-        <img src="img/avatars/avatar1.jpg" alt="" />
+        <img src="/img/avatars/avatar1.jpg" alt="" />
       </div>
       <div className="comment-text">
         <ul className="comment-star">

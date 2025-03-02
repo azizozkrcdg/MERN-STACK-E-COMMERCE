@@ -51,10 +51,10 @@ const Footer = () => {
                 <div className="footer-contact-bottom">
                   <div className="download-app">
                     <a href="#">
-                      <img src="img/footer/app-store.png" alt=""></img>
+                      <img src="/img/footer/app-store.png" alt=""></img>
                     </a>
                     <a href="#">
-                      <img src="img/footer/google-play.png" alt=""></img>
+                      <img src="/img/footer/google-play.png" alt=""></img>
                     </a>
                   </div>
                   <p className="privacy-text">
@@ -182,7 +182,7 @@ const Footer = () => {
                 </p>
               </div>
               <a href="#">
-                <img src="img/footer/cards.png" alt=""></img>
+                <img src="/img/footer/cards.png" alt=""></img>
               </a>
               <div className="footer-menu">
                 <ul className="footer-menu-list">

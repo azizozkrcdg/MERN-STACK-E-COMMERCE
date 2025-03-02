@@ -46,7 +46,7 @@ const Gallery = () => {
   return (
     <div className="product-gallery">
       <div className="single-image-wrapper">
-        <img src={activeImage} id="single-image" alt="" />
+        <img src={`/${activeImage}`} id="single-image" alt="" />
       </div>
       <div className="product-thumb">
         <div className="glide__track" data-glide-el="track">
@@ -59,7 +59,7 @@ const Gallery = () => {
                   onClick={() => setActiveImage(itemImage)}
                 >
                   <img
-                    src={itemImage}
+                    src={`/${itemImage}`}
                     alt=""
                     className={`img-fluid ${
                       activeImage === itemImage ? "active" : ""
