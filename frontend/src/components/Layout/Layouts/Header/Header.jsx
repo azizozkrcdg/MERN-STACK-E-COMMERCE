@@ -1,11 +1,14 @@
 import { useContext } from "react";
 import { CartContext } from "../../../../Context/CartProvider";
+import {Link, useLocation} from "react-router-dom";
 import PropTypes from "prop-types";
 import "./Header.css"
 
 const Header = ({setIsSearchShow}) => {
 
   const {cartItems} = useContext(CartContext) 
+
+  const {pathname} = useLocation();
 
   return (
     <header>
@@ -25,18 +28,18 @@ const Header = ({setIsSearchShow}) => {
               <i className="bi bi-list" id="btn-menu"></i>
             </div>
             <div className="header-left">
-              <a href="index.html" className="logo">
+              <Link to={"/"} className="logo">
                 LOGO
-              </a>
+              </Link>
             </div>
             <div className="header-center" id="sidebar">
               <nav className="navigation">
                 <ul className="menu-list">
                   <li className="menu-list-item">
-                    <a href="index.html" className="menu-link active">
+                    <Link to={"/"} className={`menu-link ${pathname === "/" && "active"}`}>
                       Home
                       <i className="bi bi-chevron-down"></i>
-                    </a>
+                    </Link>
                     <div className="menu-dropdown-wrapper">
                       <ul className="menu-dropdown-content">
                         <li>
@@ -70,10 +73,10 @@ const Header = ({setIsSearchShow}) => {
                     </div>
                   </li>
                   <li className="menu-list-item megamenu-wrapper">
-                    <a href="shop.html" className="menu-link">
+                    <Link to={"/shop"} className={`menu-link ${pathname === "/shop" && "active"}`}>
                       Shop
                       <i className="bi bi-chevron-down"></i>
-                    </a>
+                    </Link>
                     <div className="menu-dropdown-wrapper">
                       <div className="menu-dropdown-megamenu">
                         <div className="megamenu-links">
@@ -177,14 +180,14 @@ const Header = ({setIsSearchShow}) => {
                     </div>
                   </li>
                   <li className="menu-list-item">
-                    <a href="blog.html" className="menu-link">
+                    <Link to={"/blog"} className={`menu-link ${pathname === "/blog" && "active"}`}>
                       Blog
-                    </a>
+                    </Link>
                   </li>
                   <li className="menu-list-item">
-                    <a href="contact.html" className="menu-link">
+                    <Link to={"/contact"} className={`menu-link ${pathname === "/contact" && "active"}`}>
                       Contact
-                    </a>
+                    </Link>
                   </li>
                 </ul>
               </nav>
@@ -192,9 +195,9 @@ const Header = ({setIsSearchShow}) => {
             </div>
             <div className="header-right">
               <div className="header-right-links">
-                <a href="account.html" className="header-account">
+                <Link to={"/auth"} className="header-account">
                   <i className="bi bi-person"></i>
-                </a>
+                </Link>
                 <button className="search-button" onClick={() => {
                   setIsSearchShow(true);
                 }}>
@@ -204,10 +207,10 @@ const Header = ({setIsSearchShow}) => {
                   <i className="bi bi-heart"></i>
                 </a>
                 <div className="header-cart">
-                  <a href="cart.html" className="header-cart-link">
+                  <Link to={"/cart"} className="header-cart-link">
                     <i className="bi bi-bag"></i>
                     <span className="header-cart-count">{cartItems.length}</span>
-                  </a>
+                  </Link>
                 </div>
               </div>
             </div>
