@@ -1,23 +1,23 @@
 import express from "express";
 import mongoose from "mongoose";
-
+import dotenv from "dotenv";
+import mainRoute from "./routes/index.js";
 const app = express();
 
-// const connection = async () => {
-//     try {
-//         await mongoose.connect("***");
-//         console.log("Connected to MongoDB");
-//     } catch (error) {
-//         throw error;
-//     }
-// }
+dotenv.config();
+const connection = async () => {
+    try {
+        await mongoose.connect(process.env.MONGO_DB_URI);
+        console.log("Connected to MongoDB");
+    } catch (error) {
+        throw error;
+    }
+}
 
-app.get("/", (req, res) => {
-  res.send("homepage");
-});
+app.use("/api", mainRoute);
 
 const port = 5000;
 app.listen(port, () => {
-    // connection();
+    connection();
   console.log(`server is running on port ${port}`);
 });
