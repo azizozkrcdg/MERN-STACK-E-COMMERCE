@@ -11,19 +11,18 @@ app.use(express.json());
 
 //mongoDB connection
 const connection = async () => {
-    try {
-        await mongoose.connect(process.env.MONGO_DB_URI);
-        console.log("Connected to MongoDB");
-        
-    } catch (error) {
-        throw error;
-    }
-}
+  try {
+    await mongoose.connect(process.env.MONGO_DB_URI);
+    console.log("Connected to MongoDB");
+  } catch (error) {
+    console.log(error)
+  }
+};
 
 app.use("/api", mainRoute);
 
 const port = process.env.PORT;
 app.listen(port, () => {
-    connection();
+  connection();
   console.log(`server is running on port ${port}`);
 });

@@ -15,7 +15,7 @@ router.post("/", async (req, res) => {
   }
 });
 
-// kategorileri getir
+// tüm kategorileri getir
 router.get("/", async (req, res) => {
   try {
     const allCategories = await Category.find();
@@ -23,6 +23,21 @@ router.get("/", async (req, res) => {
   } catch (error) {
     console.log(error);
     res.status(500).json({ error: "Server error" });
+  }
+});
+
+// tek bir kategoriyi getirme
+router.get("/:categoryId", async (req, res) => {
+  try {
+    const categoryId = req.params.categoryId;
+    const category = await Category.findById(categoryId);
+    if (!category) {
+      return res.status(404).json({ error: "Category Not Found" });
+    }
+    res.status(200).json(category);
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ error: "Server Error" });
   }
 });
 
