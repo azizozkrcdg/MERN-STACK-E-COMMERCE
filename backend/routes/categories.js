@@ -11,7 +11,7 @@ router.post("/", async (req, res) => {
     await newCategory.save();
     res.status(201).json(newCategory);
   } catch (error) {
-    res.status(400).send(error);
+    res.status(500).send(error);
   }
 });
 
@@ -21,7 +21,6 @@ router.get("/", async (req, res) => {
     const allCategories = await Category.find();
     res.status(200).json(allCategories);
   } catch (error) {
-    console.log(error);
     res.status(500).json({ error: "Server error" });
   }
 });
@@ -36,7 +35,6 @@ router.get("/:categoryId", async (req, res) => {
     }
     res.status(200).json(category);
   } catch (error) {
-    console.log(error);
     res.status(500).json({ error: "Server Error" });
   }
 });
@@ -60,8 +58,24 @@ router.put("/:categoryId", async (req, res) => {
     );
     res.status(200).json(updatedCategory);
   } catch (error) {
-    console.log(error);
     res.status(500).json({ error: "Server Error" });
+  }
+});
+
+// kategori silme
+router.delete("/:categoryId", async (req, res) => {
+  try {
+    const categoryId = req.params.categoryId;
+    const deletedCategory = await Category.findByIdAndDelete(categoryId);
+
+    if (!deletedCategory) {
+      return res.status(404).json({ error: "Category Not Found" });
+    }
+
+    res.status(200).json({ message: "Category deleted" });
+  } catch (error) {
+    console.log(error)
+    res.status(500).json(error);
   }
 });
 
