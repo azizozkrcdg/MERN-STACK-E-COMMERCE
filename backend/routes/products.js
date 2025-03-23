@@ -1,10 +1,9 @@
 import express from "express";
+import productController from "../controllers/productsController.js";
 
 const router = express.Router();
 
 // ürünleri getir
-router.get("/", async (req, res) => {
-    res.send("Ürünler getirildi");
-});
+router.route("/").get(productController.getAllProducts);
 
 export default router;

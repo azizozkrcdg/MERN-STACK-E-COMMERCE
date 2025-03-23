@@ -1,7 +1,9 @@
 import express from "express";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
-import mainRoute from "./routes/index.js";
+import categories from "./routes/categories.js";
+import products from "./routes/products.js";
+import users from "./routes/auth.js";
 
 const app = express();
 dotenv.config();
@@ -19,7 +21,9 @@ const connection = async () => {
   }
 };
 
-app.use("/api", mainRoute);
+app.use("/api/categories", categories);
+app.use("/api/products", products);
+app.use("/api/auth", users);
 
 const port = process.env.PORT;
 app.listen(port, () => {
