@@ -14,7 +14,7 @@ const generateAvatar = () => {
 router.post("/register", async (req, res) => {
   try {
     const { username, email, password, role, avatar } = req.body;
-    const defaulAvatar = generateAvatar();
+    const defaulAvatar = generateAvatar(); //generateAvatar fonksiyonunu çağır
     const existingUser = await User.findOne({ email });
 
     if (existingUser) {
@@ -26,11 +26,40 @@ router.post("/register", async (req, res) => {
       email,
       password: hashedPassword,
       role,
-      avatar : defaulAvatar,
+      avatar: defaulAvatar,
     });
     await newUser.save();
 
     res.status(201).json(newUser);
+  } catch (error) {
+    res.status(500).json({ error: "Server error" });
+  }
+});
+
+// kullanıcı giriş kontrolü login işlemi
+router.post("/login", async (req, res) => {
+  try {
+    const { email, password } = req.body;
+
+    // kullanıcı olup olmadığı kontrolü
+    const user = await User.findOne({ email });
+    if (!user) {
+      return res.status(401).json({ message: "Geçersiz email ya da şifre" });
+    }
+    
+    // parola kontrolü
+    const isPasswordTrue = await bcrypt.compare(password, user.password);
+    if(!isPasswordTrue) {
+      return res.status(401).json({ message: "Geçersiz email ya da şifre" });
+    }
+
+    res.status(200).json({
+      id : user._id,
+      email : user.email,
+      username : user.username,
+      role : user.role,
+      avatar : user.avatar
+    });
   } catch (error) {
     res.status(500).json({ error: "Server error" });
   }
