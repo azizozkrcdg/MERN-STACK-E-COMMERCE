@@ -4,9 +4,17 @@ import User from "../models/User.js";
 
 const router = express.Router();
 
+// random avatar oluşturma
+const generateAvatar = () => {
+  const randomAvatar = Math.floor(Math.random() * 71);
+  return `https://i.pravatar.cc/150?img=${randomAvatar}`;
+};
+
+// kullanıcı kayıt işlemi
 router.post("/register", async (req, res) => {
   try {
     const { username, email, password, role, avatar } = req.body;
+    const defaulAvatar = generateAvatar();
     const existingUser = await User.findOne({ email });
 
     if (existingUser) {
@@ -18,7 +26,7 @@ router.post("/register", async (req, res) => {
       email,
       password: hashedPassword,
       role,
-      avatar,
+      avatar : defaulAvatar,
     });
     await newUser.save();
 
