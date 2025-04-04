@@ -5,7 +5,7 @@ const ReviewsSchema = mongoose.Schema({
     type: String,
     required: true,
   },
-  reviews: {
+  rating: {
     type: Number,
     required: true,
   },
@@ -38,7 +38,7 @@ const ProductSchema = mongoose.Schema(
         required: true,
       },
     ],
-    size: [
+    sizes: [
       {
         type: String,
         required: true,
@@ -59,7 +59,7 @@ const ProductSchema = mongoose.Schema(
       required: true,
     },
   },
-  { Timestamps: true }
+  { timestamps: true }
 );
 
 const Product = mongoose.model("Product", ProductSchema);
