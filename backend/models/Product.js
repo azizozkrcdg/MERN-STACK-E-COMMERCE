@@ -13,36 +13,6 @@ const ReviewsSchema = mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: "User",
   },
-  description: {
-    type: String,
-    required: true,
-  },
-  colors: [
-    {
-      type: String,
-      required: true,
-    },
-  ],
-  size: [
-    {
-      type: String,
-      required: true,
-    },
-  ],
-  price: {
-    current: {
-      type: Number,
-      required: true,
-    },
-    discount: {
-      type: Number,
-    },
-  },
-  category: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: "Category",
-    required: true,
-  },
 });
 
 const ProductSchema = mongoose.Schema(
@@ -58,6 +28,36 @@ const ProductSchema = mongoose.Schema(
       },
     ],
     reviews: [ReviewsSchema],
+    description: {
+      type: String,
+      required: true,
+    },
+    colors: [
+      {
+        type: String,
+        required: true,
+      },
+    ],
+    size: [
+      {
+        type: String,
+        required: true,
+      },
+    ],
+    price: {
+      current: {
+        type: Number,
+        required: true,
+      },
+      discount: {
+        type: Number,
+      },
+    },
+    category: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Category",
+      required: true,
+    },
   },
   { Timestamps: true }
 );
