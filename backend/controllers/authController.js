@@ -11,7 +11,7 @@ const generateAvatar = () => {
 const createUser = async (req, res) => {
   try {
     const { username, email, password, role, avatar } = req.body;
-    const defaulAvatar = generateAvatar(); //generateAvatar fonksiyonunu çağır
+    const defaultAvatar = generateAvatar(); //generateAvatar fonksiyonunu çağır
     const existingUser = await User.findOne({ email });
 
     if (existingUser) {
@@ -23,7 +23,7 @@ const createUser = async (req, res) => {
       email,
       password: hashedPassword,
       role,
-      avatar: defaulAvatar,
+      avatar: defaultAvatar,
     });
     await newUser.save();
 
