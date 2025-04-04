@@ -27,12 +27,34 @@ const getProduct = async (req, res) => {
   try {
     const productId = req.params.productId;
     const product = await Product.findById(productId);
-    res.status(200).json(product)
+    res.status(200).json(product);
   } catch (error) {
-    console.log(error)
+    console.log(error);
     res.status(500).json({ error: "Server error" });
   }
 };
 
-const productController = {createProduct, getAllProducts, getProduct };
+// ürün güncelle
+const updateProduct = async (req, res) => {
+  try {
+    const productId = req.params.productId;
+    const updates = req.body;
+    const product = await Product.findById(productId);
+
+    if (!product) {
+      res.status(404).json({ message: "Böyle bir ürün yok!" });
+    }
+
+    const updatedProduct = await Product.findByIdAndUpdate(
+      productId,
+      updates, 
+      {new: true,} //ürünün güncellenmiş halini döndürür
+    );
+    res.status(200).json({ updatedProduct });
+  } catch (error) {
+    res.status(500).json({ error: "Server error" });
+  }
+};
+
+const productController = { createProduct, getAllProducts, getProduct, updateProduct };
 export default productController;
