@@ -27,6 +27,9 @@ const getProduct = async (req, res) => {
   try {
     const productId = req.params.productId;
     const product = await Product.findById(productId);
+    if (!product) {
+      return res.status(404).json({ error: "Ürün bulunamadı!" });
+    }
     res.status(200).json(product);
   } catch (error) {
     console.log(error);
@@ -47,8 +50,8 @@ const updateProduct = async (req, res) => {
 
     const updatedProduct = await Product.findByIdAndUpdate(
       productId,
-      updates, 
-      {new: true,} //ürünün güncellenmiş halini döndürür
+      updates,
+      { new: true } //ürünün güncellenmiş halini döndürür
     );
     res.status(200).json({ updatedProduct });
   } catch (error) {
@@ -56,5 +59,27 @@ const updateProduct = async (req, res) => {
   }
 };
 
-const productController = { createProduct, getAllProducts, getProduct, updateProduct };
+// ürün sil
+const deleteProduct = async (req, res) => {
+  try {
+    const productId = req.params.productId;
+    const deletedProduct = await Product.findByIdAndDelete(productId);
+
+    if (!deletedProduct) {
+      return res.status(404).json({ error: "Ürün bulunamadı!" });
+    }
+
+    res.status(200).json(deletedProduct);
+  } catch (error) {
+    res.status(500).json({ error: "Server error" });
+  }
+};
+
+const productController = {
+  createProduct,
+  getAllProducts,
+  getProduct,
+  updateProduct,
+  deleteProduct
+};
 export default productController;
