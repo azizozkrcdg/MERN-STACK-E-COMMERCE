@@ -4,11 +4,13 @@ import Coupon from "../models/Coupon.js";
 const createCoupon = async (req, res) => {
   try {
     const coupon = req.body;
-    const {code} = req.body;
-    const existingCoupon = await Coupon.findOne({code});
-    if(existingCoupon) {
-      return res.status(400).json({error: "Böyle bir kupon zaten var."})
+    const { code } = req.body;
+    const existingCoupon = await Coupon.findOne({ code });
+    // kupon zaten varsa uyarı ver
+    if (existingCoupon) {
+      return res.status(400).json({ error: "Böyle bir kupon zaten var." });
     }
+
     const newCoupon = new Coupon(coupon);
     await newCoupon.save();
     res.status(201).json(newCoupon);
@@ -37,14 +39,14 @@ const getCoupon = async (req, res) => {
 const getCouponCode = async (req, res) => {
   try {
     const couponCode = req.params.couponCode;
-    const coupon = await Coupon.findOne({code: couponCode});
+    const coupon = await Coupon.findOne({ code: couponCode });
 
     if (!coupon) {
       return res.status(404).json({ error: "Kupon bulunamadı!" });
     }
 
-    const {discountPer} = coupon;
-    res.status(200).json({discountPer});
+    const { discountPer } = coupon;
+    res.status(200).json({ discountPer });
   } catch (error) {
     res.status(500).json({ error: "Server error!" });
   }
@@ -93,7 +95,7 @@ const deleteCoupon = async (req, res) => {
 
   const deletedCoupon = await Coupon.findByIdAndDelete(coupon);
   res.status(200).json(deletedCoupon);
-}
+};
 
 const couponController = {
   createCoupon,
@@ -101,6 +103,6 @@ const couponController = {
   getCouponCode,
   getAllCoupons,
   updateCoupon,
-  deleteCoupon
+  deleteCoupon,
 };
 export default couponController;
