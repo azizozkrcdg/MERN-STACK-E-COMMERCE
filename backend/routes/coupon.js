@@ -5,6 +5,7 @@ const router = express.Router();
 
 router.route("/").post(couponController.createCoupon);
 router.route("/:couponId").get(couponController.getCoupon);
+router.route("/code/:couponCode").get(couponController.getCouponCode);
 router.route("/").get(couponController.getAllCoupons);
 router.route("/:couponId").put(couponController.updateCoupon);
 router.route("/:couponId").delete(couponController.deleteCoupon);
