@@ -1,5 +1,5 @@
 import express from "express";
-
+import cors from "cors";
 import dotenv from "dotenv";
 import categories from "./routes/categories.js";
 import products from "./routes/products.js";
@@ -12,7 +12,7 @@ dotenv.config();
 
 // middlewares
 app.use(express.json());
-
+app.use(cors());
 
 app.use("/api/categories", categories);
 app.use("/api/products", products);

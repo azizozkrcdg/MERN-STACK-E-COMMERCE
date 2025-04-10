@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { message } from "antd";
+import { useNavigate } from "react-router-dom";
 
 const Register = () => {
   const [formData, setFormData] = useState({
@@ -7,16 +9,44 @@ const Register = () => {
     password: "",
   });
 
+  const navigate = useNavigate()
+
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
-    console.log(formData)
+  };
+
+  const handleRegister = async (e) => {
+    e.preventDefault();
+
+    try {
+      const response = await fetch(`http://localhost:5000/api/auth/register`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (response.ok) {
+        const data = await response.json(); // ❗ Response body'yi oku
+        localStorage.setItem("user", JSON.stringify(data));
+
+        message.success("Kullanıcı başarıyla kaydedildi.");
+        console.log(data);
+        navigate("/");
+      } else {
+        message.error("Kullanıcı kaydedilemedi!");
+      }
+    } catch (error) {
+      console.error("İstek hatası:", error);
+    }
   };
 
   return (
     <div className="account-column">
       <h2>Register</h2>
-      <form>
+      <form onSubmit={handleRegister}>
         <div>
           <label>
             <span>
