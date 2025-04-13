@@ -9,7 +9,5 @@ router.route("/register").post(authController.createUser);
 // kullanıcı giriş kontrolü login işlemi
 router.route("/login").post(authController.loginUser);
 
-// kullanıcıları getir
-router.route("/").get(authController.getAllUsers);
 
 export default router;
