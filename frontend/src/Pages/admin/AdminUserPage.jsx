@@ -1,44 +1,62 @@
-import { Table } from "antd";
-
+import { message, Table } from "antd";
+import { useEffect, useState } from "react";
 
 const AdminUserPage = () => {
+  const [dataSource, setDataSource] = useState([]);
+  const apiUrl = import.meta.env.VITE_API_BASE_URI;
 
-    const dataSource = [
-        {
-            key: "1",
-            name: "Mike",
-            age: 32,
-            address: "10 Downing Street",
-        },
-        {
-            key: "2",
-            name: "John",
-            age: 42,
-            address: "10 Downing Street",
-        },
-    ];
+  const columns = [
+    {
+      title: "Username",
+      dataIndex: "username",
+      key: "username",
+    },
+    {
+      title: "Email",
+      dataIndex: "email",
+      key: "email",
+    },
+    {
+      title: "Role",
+      dataIndex: "role",
+      key: "role",
+    },
+    {
+      title: "Avatar",
+      dataIndex: "avatar",
+      key: "avatar",
+      render: (imageSrc) => {
+        <img
+          src={imageSrc}
+          alt="Avatar"
+          style={{ width: "50px", height: "50px", borderRadius: "50%" }}
+        />;
+      },
+    },
+  ];
 
-    const columns = [
-        {
-            title: "Name",
-            dataIndex: "name",
-            key: "name",
-        },
-        {
-            title: "Age",
-            dataIndex: "age",
-            key: "age",
-        },
-        {
-            title: "Address",
-            dataIndex: "address",
-            key: "address",
-        },
-    ];
+  const fetchUsers = async () => {
+    try {
+      const response = await fetch(`${apiUrl}/api/users`);
 
-  return (
-   <Table dataSource={dataSource} columns={columns} />
-  )
-}
+      if (response.ok) {
+        const data = await response.json(); // ❗ Response body'yi oku
+        setDataSource(data);
+      } else {
+        message.error("Giriş başarısız!");
+      }
+    } catch (error) {
+      console.error("İstek hatası:", error);
+    }
+  };
 
-export default AdminUserPage
+  console.log(dataSource);
+
+  useEffect(() => {
+    fetchUsers();
+  }, []);
+
+  return <Table dataSource={dataSource} columns={columns} />;
+};
+
+export default AdminUserPage;
